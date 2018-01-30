@@ -87,51 +87,6 @@ public class Tira2017 {
         ht.writeOutput(table, "xor.txt");
     }
 
-    /**
-     * This function performs the deletion of a value from the generated table. Done before writing on file.
-     */
-    private void removeFromTable(Hashtable table, String name) {
-        // Keep bugging the user until no input is given, or the user dies.
-        boolean gaveInput = true;
-        while(gaveInput) {
-
-            // If the table isn't empty, move forward.
-            if (!table.isEmpty()) {
-                String input = "";
-                int idx = 0;
-                boolean acceptedInput = false;
-
-
-                //Again, keep asking until a valid input (integer or null this time) is given.
-                while(!acceptedInput) {
-                    System.out.print("Enter a key to be removed from " + name + "-table: ");
-                    input = getInput();
-
-                    // Checks if the input is an integer, or a empty line.
-                    // After we try to parseInt the user input.
-                    // If it's an empty line, it's still accepted as an input!
-                    if(!input.isEmpty()) try {
-                        idx = Integer.parseInt(input);
-                        acceptedInput = true;
-                    } catch (NumberFormatException e) {
-                        System.out.println("Error! Integers only.");
-                    } else {
-                        acceptedInput = true;
-                        gaveInput = false;
-                    }
-                }
-
-                // Only if the input contained an integer, do we delete anything.
-                if(!input.isEmpty())
-                    table.remove(idx);
-
-            } else {
-                // If the table is empty, there's not much we can delete, no?
-                gaveInput = false;
-                System.out.println("The " + name + "-table has no items to remove.");
-            }
-        }
-    }
 
     /**
      * Performs the logical operation union for the two parameter arrays.
@@ -214,6 +169,53 @@ public class Tira2017 {
 
         return xor;
     }
+  
+    /**
+     * This function performs the deletion of a value from the generated table. Done before writing on file.
+     */
+    private void removeFromTable(Hashtable table, String name) {
+        // Keep bugging the user until no input is given, or the user dies.
+        boolean gaveInput = true;
+        while(gaveInput) {
+
+            // If the table isn't empty, move forward.
+            if (!table.isEmpty()) {
+                String input = "";
+                int idx = 0;
+                boolean acceptedInput = false;
+
+
+                //Again, keep asking until a valid input (integer or null this time) is given.
+                while(!acceptedInput) {
+                    System.out.print("Enter a key to be removed from " + name + "-table: ");
+                    input = getInput();
+
+                    // Checks if the input is an integer, or a empty line.
+                    // After we try to parseInt the user input.
+                    // If it's an empty line, it's still accepted as an input!
+                    if(!input.isEmpty()) try {
+                        idx = Integer.parseInt(input);
+                        acceptedInput = true;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error! Integers only.");
+                    } else {
+                        acceptedInput = true;
+                        gaveInput = false;
+                    }
+                }
+
+                // Only if the input contained an integer, do we delete anything.
+                if(!input.isEmpty())
+                    table.remove(idx);
+
+            } else {
+                // If the table is empty, there's not much we can delete, no?
+                gaveInput = false;
+                System.out.println("The " + name + "-table has no items to remove.");
+            }
+        }
+    }
+
 
     /**
      * Reads the numbers from the given file. File is assumed to be in the same folder.
