@@ -19,7 +19,7 @@ public class Tira2017 {
 
     public static void main(String[] args) {
         Tira2017 ht = new Tira2017();
-        boolean skipDelete = false;
+        
 
         // Welcome the user, and explain the program.
         System.out.println(" ***** Welcome, human! ***** ");
@@ -47,6 +47,7 @@ public class Tira2017 {
         // Info about files, and prompt user if it wants to delete anything as per instructions.
         System.out.println("\nThe files contain " + (setA.length + setB.length) + " items in total.");
         System.out.println("Would you like to delete any items from the output tables? (yes/no)");
+        boolean skipDelete = false;
         String answer = ht.getInput();
         if (answer.toLowerCase().equals("no")) {
             System.out.println("Alrighty! Generating AND, OR & XOR files.");
